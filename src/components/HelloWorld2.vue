@@ -44,12 +44,12 @@
       </li>
       <li>
         <a href="http://vue-loader.vuejs.org/" target="_blank">
-        111111
+          vue-loader
         </a>
       </li>
       <li>
         <a href="https://github.com/vuejs/awesome-vue" target="_blank">
-          awesome-vue {{$store.state.msg}}
+         {{$store.state.msg}}
         </a>
       </li>
     </ul>
@@ -58,14 +58,14 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "HelloWorld2",
   data() {
     return {
       msg: "Welcome to Your Vue.js App"
     };
   },
   mounted(){
-    this.getlogin();
+  //   this.getlogin();
    this.getlist();
   },
   methods:{
@@ -81,17 +81,11 @@ export default {
           console.log(res);
           if (res.token) {
             that.$cookies.set("token", res.token, new Date(res.expiresTime));
-
+            // that.$router.push("/ContentArticle");
           }
         })
         .catch(e => {
           console.log(e);
-           this.$store.commit({
-              type:'getMsg',
-              msg:'1111'
-            });
-             that.$router.push("/HelloWorld2");
-
           // that.errormsg = "账号或者密码错误";
         });
     },
@@ -107,22 +101,9 @@ export default {
        console.log('res');
       $api.DashboardApi.getTableList(params)
         .then(res => {
-            that.$router.push("/HelloWorld2");
-            this.$store.commit('getMsg','1111');
           console.log(res);
-          // that.tableData.tableContent = res;
-          // that.tableData.tableContent.sort(function(a, b) {
-          //   return (
-          //     Date.parse(b.registTime.replace(/-/g, "/")) -
-          //     Date.parse(a.registTime.replace(/-/g, "/"))
-          //   );
-          // });
         })
         .catch(error => {
-          // if (error.status == "401") {
-          //   that.$cookies.remove("token");
-          //   that.$router.push("/Login");
-          // }
         });
     }
   }
