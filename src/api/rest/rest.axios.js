@@ -1,6 +1,5 @@
 import axios from 'axios';
-let loadingCount= 0;
-let that=this;
+
 // TODO Loading...
 
 axios.interceptors.request.use(

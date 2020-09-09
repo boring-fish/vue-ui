@@ -1,4 +1,5 @@
 <template>
+<Container :options="{width:1680,height:1050}">
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
@@ -54,11 +55,19 @@
       </li>
     </ul>
   </div>
+  </Container>
 </template>
 
 <script>
+import Container from "./Container/Container.vue"
+import HelloWorld2 from "./HelloWorld2.vue"
+
 export default {
+
   name: "HelloWorld",
+  components:{
+    Container,
+  },
   data() {
     return {
       msg: "Welcome to Your Vue.js App"
@@ -139,6 +148,10 @@ h2 {
 ul {
   list-style-type: none;
   padding: 0;
+  width:300px;
+  height:200px;
+  margin-left:200px;
+  background: skyblue;
 }
 li {
   display: inline-block;

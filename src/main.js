@@ -5,11 +5,12 @@ import router from "./router";
 import axios from "axios";
 import { ApiService } from "@/api";
 import store from './store/index.js'
+import   common  from './utils/common.js'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
 Vue.config.productionTip = false
-
+Vue.prototype.common = common;
 let apiService = new ApiService();
 const global = window;
 global.$api = apiService;
