@@ -13,7 +13,7 @@ import Vuex from 'vuex'
      }
    },
    getter:{
-    // msg:this.getMsg(data)
+    
    }
  })
 

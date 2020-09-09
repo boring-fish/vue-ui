@@ -10,7 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {    
+    proxyTable: {
       '/api': {                       //需要代理的接口
         target:'https://service-hg5j94q2-1302382638.gz.apigw.tencentcs.com', //目标服务器
         changeOrigin: true,　　　　　　 //是否跨域
@@ -58,7 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

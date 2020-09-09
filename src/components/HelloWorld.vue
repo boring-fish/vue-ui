@@ -65,8 +65,9 @@ export default {
     };
   },
   mounted(){
-    this.getlogin();
-   this.getlist();
+    // this.getlist();
+    // this.getlogin();
+
   },
   methods:{
     getlogin(){

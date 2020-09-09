@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 let apiService = new ApiService();
 const global = window;
 global.$api = apiService;
-
+console.log(process.env);
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
 
 new Vue({
