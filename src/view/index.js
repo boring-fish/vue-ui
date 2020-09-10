@@ -1,7 +1,3 @@
-import index from './index/index.vue';
+import index from './index/index.vue'
 
-
-
-export {
-  index
-};
+export { index }

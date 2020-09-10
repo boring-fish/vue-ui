@@ -1,9 +1,8 @@
-import  {DashboardApi}  from './dashboard';
-
+import { DashboardApi } from './dashboard'
 
 export class ApiService {
   DashboardApi
   constructor() {
-    this.DashboardApi = new DashboardApi();
+    this.DashboardApi = new DashboardApi()
   }
 }

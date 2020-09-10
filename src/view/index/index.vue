@@ -1,30 +1,26 @@
 <template>
-<Container :options="{width:1680,height:1050}">
-   <test></test>
-</Container>
+  <Container :options="{ width: 1680, height: 1050 }">
+    <test></test>
+  </Container>
 </template>
 
 <script>
-import _ from 'lodash';
-import {Container,test}from "@/components"
+// import _ from 'lodash';
+import { Container, test } from '@/components'
 
 export default {
   name: 'index',
-  props:['options'],
-   components:{
+  props: ['options'],
+  components: {
     Container,
     test
   },
-  data(){
-    return {
-    }
+  data() {
+    return {}
   },
 
-  mounted() {
-  },
-  methods:{
-  }
-
+  mounted() {},
+  methods: {}
 }
 </script>
 

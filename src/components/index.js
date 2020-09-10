@@ -1,9 +1,4 @@
-import test from './test/test.vue';
-import Container from './Container/Container.vue';
+import test from './test/test.vue'
+import Container from './Container/Container.vue'
 
-
-
-export {
-  test,
-  Container
-};
+export { test, Container }
