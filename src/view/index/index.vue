@@ -1,19 +1,24 @@
 <template>
   <Container :options="{ width: 1680, height: 1050 }">
-    <test></test>
+    <div class="disvoard">
+       <sideBar class="side"></sideBar>
+        <router-view/>
+    </div>
+
   </Container>
 </template>
 
 <script>
 // import _ from 'lodash';
-import { Container, test } from '@/components'
+import { Container, test, sideBar } from '@/components'
 
 export default {
   name: 'index',
   props: ['options'],
   components: {
     Container,
-    test
+    test,
+    sideBar
   },
   data() {
     return {}
@@ -32,5 +37,13 @@ export default {
   overflow: hidden;
   transform-origin: left top;
   z-index: 999;
+}
+.side{
+   position:fixed;
+  left:20px;
+  top:20px;
+}
+.disvoard{
+  display:flex;
 }
 </style>

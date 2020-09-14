@@ -80,8 +80,6 @@ export default {
             msg: '1111'
           })
           that.$router.push('/HelloWorld2')
-
-          // that.errormsg = "账号或者密码错误";
         })
     },
     getlist() {
@@ -100,20 +98,8 @@ export default {
           this.$router.push('/HelloWorld2')
           this.$store.commit('getMsg', '1111')
           console.log(res)
-          // that.tableData.tableContent = res;
-          // that.tableData.tableContent.sort(function(a, b) {
-          //   return (
-          //     Date.parse(b.registTime.replace(/-/g, "/")) -
-          //     Date.parse(a.registTime.replace(/-/g, "/"))
-          //   );
-          // });
         })
-        .catch((error) => {
-          // if (error.status == "401") {
-          //   that.$cookies.remove("token");
-          //   that.$router.push("/Login");
-          // }
-        })
+        .catch((error) => {})
     }
   }
 }

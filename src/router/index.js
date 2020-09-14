@@ -8,16 +8,20 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'index',
-    //   component: index
-    // },
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'index',
+      // redirect:'/index',
+      component: index,
+      children:[
+        {
+          path: '/HelloWorld',
+          name: 'HelloWorld',
+          component: HelloWorld
+        },
+      ]
     },
+
     {
       path: '/HelloWorld2',
       name: 'HelloWorld2',
