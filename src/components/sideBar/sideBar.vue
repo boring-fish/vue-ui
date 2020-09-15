@@ -4,7 +4,7 @@
       <el-radio-button :label="false">展开</el-radio-button>
       <el-radio-button :label="true">收起</el-radio-button>
     </el-radio-group>
-    <el-menu default-active="1-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    <el-menu default-active="1-1-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
       <el-submenu :index="findexs(findex)" v-for="(fitem, findex) in tabList" :key="findex">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -12,10 +12,12 @@
         </template>
         <el-menu-item-group>
           <div v-for="(sitem, sindex) in fitem.selectNum" :key="sindex">
-            <el-menu-item v-if="sitem.selectnameList.length == 0" :index="sindexs(findex, sindex, fitem)" @click="tz(sitem.url)">{{ sitem.selectname }}</el-menu-item>
+            <el-menu-item v-if="sitem.selectnameList.length == 0" :index="sindexs(findex, sindex, fitem)" @click="tz(sitem.url)">{{
+              sitem.selectname
+            }}</el-menu-item>
             <el-submenu v-else :index="sindexs(findex, sindex, fitem)">
               <span slot="title">{{ sitem.selectname }}</span>
-              <el-menu-item :index="tindexs(findex, sindex, tindex)"   v-for="(titem, tindex) in sitem.selectnameList" :key="tindex" @click="tz(titem.url)">{{
+              <el-menu-item :index="tindexs(findex, sindex, tindex)" v-for="(titem, tindex) in sitem.selectnameList" :key="tindex" @click="tz(titem.url)">{{
                 titem.selectChildname
               }}</el-menu-item>
             </el-submenu>
@@ -52,7 +54,7 @@ export default {
               selectnameList: [
                 {
                   selectChildname: '选项子元素1',
-                  url:'index',
+                  url: 'test',
                   selectnameChildList: [
                     // {
                     //   selectnameChild:'选项子元素11'
@@ -64,7 +66,7 @@ export default {
                 },
                 {
                   selectChildname: '选项子元素2',
-                  url:'HelloWorld',
+                  url: 'HelloWorld2',
                   selectnameChildList: []
                 },
                 {
@@ -75,6 +77,7 @@ export default {
             },
             {
               selectname: '选项二',
+              url: 'formui',
               selectnameList: [
                 //  {
                 //   selectChildname: '选项子元素22',
@@ -100,6 +103,10 @@ export default {
       ]
     }
   },
+  mounted() {
+    // this.$router.push(`/${url}`);
+    this.tz('test')
+  },
   methods: {
     findexs(findex) {
       let a = findex + 1
@@ -116,13 +123,12 @@ export default {
       console.log(findex + 1 + '-' + (sindex + 1) + '-' + (tindex + 1))
       return findex + 1 + '-' + (sindex + 1) + '-' + (tindex + 1)
     },
-    tz(url){
-       this.$router.push(`/${url}`);
+    tz(url) {
+      this.$router.push(`/${url}`)
       //  this.$router.push(`/${url}`);
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath)
-
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath)
@@ -132,11 +138,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar{
-  width:200px;
-  position:fixed;
-  left:20px;
-  top:20px;
+.sidebar {
+  width: 200px;
 }
 .el-submenu .el-menu-item {
   padding: 0;

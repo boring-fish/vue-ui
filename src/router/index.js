@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { index } from '@/view'
+import { test, formui } from '@/components'
+
 import HelloWorld from '@/components/HelloWorld'
 import HelloWorld2 from '@/components/HelloWorld2'
-
+// 解决路由重复报错
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err)
+}
 Vue.use(Router)
 
 export default new Router({
@@ -13,19 +19,28 @@ export default new Router({
       name: 'index',
       // redirect:'/index',
       component: index,
-      children:[
+      children: [
         {
           path: '/HelloWorld',
           name: 'HelloWorld',
           component: HelloWorld
         },
+        {
+          path: '/test',
+          name: 'test',
+          component: test
+        },
+        {
+          path: '/formui',
+          name: 'formui',
+          component: formui
+        },
+        {
+          path: '/HelloWorld2',
+          name: 'HelloWorld2',
+          component: HelloWorld2
+        }
       ]
-    },
-
-    {
-      path: '/HelloWorld2',
-      name: 'HelloWorld2',
-      component: HelloWorld2
     }
   ]
 })

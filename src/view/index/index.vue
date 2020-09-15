@@ -1,10 +1,9 @@
 <template>
   <Container :options="{ width: 1680, height: 1050 }">
     <div class="disvoard">
-       <sideBar class="side"></sideBar>
-        <router-view/>
+      <sideBar class="side"></sideBar>
+      <router-view />
     </div>
-
   </Container>
 </template>
 
@@ -21,7 +20,22 @@ export default {
     sideBar
   },
   data() {
-    return {}
+    return {
+      breadcrumbList: [
+        {
+          name: '导航一',
+          path: '/'
+        },
+        {
+          name: '选项一',
+          path: '/'
+        },
+        {
+          name: '选项子元素1',
+          path: ''
+        }
+      ]
+    }
   },
 
   mounted() {},
@@ -38,12 +52,7 @@ export default {
   transform-origin: left top;
   z-index: 999;
 }
-.side{
-   position:fixed;
-  left:20px;
-  top:20px;
-}
-.disvoard{
-  display:flex;
+.disvoard {
+  display: flex;
 }
 </style>
