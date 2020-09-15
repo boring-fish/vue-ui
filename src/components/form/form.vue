@@ -61,13 +61,36 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog title="提示" :visible.sync="dialogVisible" :modal-append-to-body="false" width="30%" :before-close="handleClose">
-      <span>这是一段信息</span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      </span>
+    <!-- <el-dialog title="提示" :visible.sync="dialogVisible"  width="30%" :before-close="handleClose">
+      复制代码 -->
+    <el-dialog title="addName" :visible.sync="dialogVisible" width="500px" style="padding: 0" :before-close="handleClose" :modal-append-to-body="false">
+      附件名称：<el-input v-model="addFileName" autocomplete="off" size="small" style="width: 300px"></el-input>
+      <div class="add-file-right" style="height: 70px; margin-left: 100px; margin-top: 15px">
+        <div class="add-file-right-img" style="margin-left: 70px">上传文件：</div>
+        <input
+          type="file"
+          ref="clearFile"
+          @change="getFile($event)"
+          multiple="multiplt"
+          class="add-file-right-input"
+          style="margin-left: 70px"
+          accept=".docx,.doc,.pdf,.jpg"
+        />
+        <span class="add-file-right-more">支持扩展名：.doc .docx .pdf </span>
+      </div>
+      <div class="add-file-list">
+        <ul>
+          <li v-for="(item, index) in addArr" :key="index">
+            <a>{{ item.name }}</a>
+          </li>
+        </ul>
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitAddFile" size="small">开始上传</el-button>
+        <el-button @click="resetAdd" size="small">全部删除</el-button>
+      </div>
     </el-dialog>
+    <!-- </el-dialog> -->
   </div>
 </template>
 
@@ -81,6 +104,8 @@ export default {
   },
   data() {
     return {
+      addArr: [],
+      addFileName: '',
       breadcrumbList: [
         {
           name: '导航一',
@@ -168,11 +193,46 @@ export default {
       this.$confirm('确认关闭？')
         .then((_) => {
           // this.dialogVisible=false;
-          console.log(this.dialogVisible)
           done()
-          console.log(this.dialogVisible)
         })
         .catch((_) => {})
+    },
+    getFile(event) {
+      var file = event.target.files
+      for (var i = 0; i < file.length; i++) {
+        //    上传类型判断
+        var imgName = file[i].name
+        var idx = imgName.lastIndexOf('.')
+        if (idx !== -1) {
+          var ext = imgName.substr(idx + 1).toUpperCase()
+          ext = ext.toLowerCase()
+          if (ext !== 'pdf' && ext !== 'doc' && ext !== 'docx' && ext !== 'jpg') {
+          } else {
+            this.addArr.push(file[i])
+          }
+        } else {
+        }
+      }
+    },
+    submitAddFile() {
+      if (this.addArr.length === 0) {
+        this.$message({
+          type: 'info',
+          message: '请选择要上传的文件'
+        })
+        return
+      }
+      var formData = new FormData()
+      // formData.append('num', this.addType);
+      // formData.append('linkId',this.addId);
+      formData.append('rfilename', this.addFileName)
+      for (var i = 0; i < this.addArr.length; i++) {
+        formData.append('fileUpload', this.addArr[i])
+        console.log(formData.get('fileUpload')) // formData是实例化
+      }
+    },
+    resetAdd() {
+      console.log(this.addArr)
     }
   }
 }

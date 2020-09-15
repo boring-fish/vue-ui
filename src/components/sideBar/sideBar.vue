@@ -105,7 +105,7 @@ export default {
   },
   mounted() {
     // this.$router.push(`/${url}`);
-    this.tz('test')
+    this.tz('formui')
   },
   methods: {
     findexs(findex) {
